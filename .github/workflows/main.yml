@@ -15,6 +15,7 @@ jobs:
 
     strategy:
       matrix:
+        # building on nodejs LTS
         node-version: [14.x]
     steps:
       - uses: actions/checkout@v2
