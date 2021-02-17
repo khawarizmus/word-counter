@@ -42,6 +42,7 @@
     "@types/es6-promise": "^3.3.0",
     "@types/jest": "^26.0.20",
     "@types/lodash": "^4.14.102",
+    "@types/lodash-es": "^4.17.4",
     "@typescript-eslint/eslint-plugin": "^4.15.1",
     "@typescript-eslint/parser": "^4.15.1",
     "codecov": "^3.0.1",
@@ -74,8 +75,11 @@
   },
   "jest": {
     "transform": {
-      "^.+\\.tsx?$": "ts-jest"
+      "^.+\\.(j|t)sx?$": "ts-jest"
     },
+    "transformIgnorePatterns": [
+      "<rootDir>/node_modules/(?!lodash-es/.*)"
+    ],
     "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(tsx?)$",
     "moduleFileExtensions": [
       "ts",
