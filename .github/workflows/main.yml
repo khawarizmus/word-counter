@@ -1,12 +1,15 @@
 name: Build, Test and Release
+# This workflow will build, test and release our CLI
 
+# we only run this workflow on the main (release) branch for both commits and PRs
 on:
   push:
-    branches: [master]
+    branches: [main]
   pull_request:
-    branches: [master]
+    branches: [main]
 
 jobs:
+  # we start with the build job
   Build:
     runs-on: ubuntu-latest
 
@@ -24,6 +27,7 @@ jobs:
         env:
             CI: true
   # Test
+  # we release if everything is fine
   Release:
     runs-on: ubuntu-latest
     needs: build
