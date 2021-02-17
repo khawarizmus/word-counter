@@ -6,6 +6,9 @@
     <a href="https://github.com/gimyboya/word-counter/actions">
       <img src="https://github.com/gimyboya/word-counter/workflows/Build/badge.svg?branch=main" />
     </a>
+    <a href="https://github.com/gimyboya/word-counter/actions">
+      <img src="https://github.com/gimyboya/word-counter/workflows/Test/badge.svg?branch=main" />
+    </a>
     <a href="https://codecov.io/gh/gimyboya/word-counter">
       <img src="https://codecov.io/gh/gimyboya/word-counter/branch/master/graph/badge.svg" />
     </a>

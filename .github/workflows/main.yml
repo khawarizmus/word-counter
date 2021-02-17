@@ -12,6 +12,7 @@ jobs:
   # we start with the build job
   Build:
     runs-on: ubuntu-latest
+    name: Build
 
     strategy:
       matrix:
@@ -19,7 +20,7 @@ jobs:
         node-version: [14.x]
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: building on Node.js ${{ matrix.node-version }} 🛠️
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
@@ -27,17 +28,24 @@ jobs:
       - run: yarn build
         env:
             CI: true
-  # Test
+  Test:
+    runs-on: ubuntu-latest
+    name: Test
+    steps:
+     - uses: actions/checkout@v2
+     - name: Running Tests 🧪
+     - run: yarn test
   # we release if everything is fine
   Release:
     runs-on: ubuntu-latest
-    needs: build
+    name: Release
+    needs: Test
     if: github.event_name == 'push'
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Semantic Release
+      - name: Preparing a release 🚀
         uses: cycjimmy/semantic-release-action@v2
         with:
           extra_plugins: |
