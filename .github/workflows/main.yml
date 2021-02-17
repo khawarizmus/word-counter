@@ -31,9 +31,16 @@ jobs:
   Test:
     runs-on: ubuntu-latest
     name: Test
+    strategy:
+      matrix:
+        # building on nodejs LTS
+        node-version: [14.x]
     steps:
      - uses: actions/checkout@v2
      - name: Running Tests 🧪
+       uses: actions/setup-node@v1
+       with:
+          node-version: ${{ matrix.node-version }}
      - run: yarn test
   # we release if everything is fine
   Release:
