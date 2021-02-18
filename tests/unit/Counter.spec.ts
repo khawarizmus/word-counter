@@ -1,5 +1,5 @@
 import { counter } from '../../src/Counter';
-import { shuffle, words } from 'lodash-es';
+import _ from 'lodash';
 
 describe('the counter function count words consistently', () => {
   it('should deburr content', () => {
@@ -39,7 +39,7 @@ describe('the counter function count words consistently', () => {
     Repeated units are generally whole sections of words and are larger than a syllable, with words being repeated the most often, followed by phrases, and then syllables or sounds.
     Palilalic repetitions are often spoken with decreasing volume and speed up over time.`;
 
-    const suffuledContent = shuffle(words(content)).join(' ');
+    const suffuledContent = _.shuffle(_.words(content)).join(' ');
 
     expect(counter(content).map((pair) => pair[1])).toEqual(
       counter(suffuledContent).map((pair) => pair[1])
