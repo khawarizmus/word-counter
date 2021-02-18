@@ -1,4 +1,4 @@
-# Typescript-Starter
+# word-counter
 
 <p align="center">
   <img alt="counter" src="./logo.png" height="200" />

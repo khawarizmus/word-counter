@@ -17,7 +17,7 @@ jobs:
     strategy:
       matrix:
         # building on nodejs LTS
-        node-version: [14.x]
+        node-version: [12.x, 14.x]
     steps:
       - uses: actions/checkout@v2
       - name: building on Node.js ${{ matrix.node-version }} 🛠️
@@ -34,7 +34,7 @@ jobs:
     strategy:
       matrix:
         # building on nodejs LTS
-        node-version: [14.x]
+        node-version: [12.x, 14.x]
     steps:
      - uses: actions/checkout@v2
      - name: Running Tests 🧪

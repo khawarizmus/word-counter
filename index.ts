@@ -4,24 +4,28 @@ import { counter } from './src/Counter';
 import { logger } from './src/Logger';
 import chalk from 'chalk';
 
-const cli = cac();
+const cli = cac('word-counter');
 
-cli.command('<file>', 'file name or path to count the words').action(async (file, options) => {
-  logger.profile('task');
-  if (options.verbose) {
-    logger.level = 'verbose';
-  }
-  logger.verbose('processing the file: %s', file);
-  await extractor(file)
-    .then((data) => {
-      counter(data).forEach((pair) => console.log(`${pair[0]}: ${pair[1]}`));
-      logger.profile('task');
-    })
-    .catch((err) => {
-      logger.error(new Error(err));
-      logger.profile('task');
-    });
-});
+cli
+  .command('<file>', 'file name or path to count the words')
+  .action(async (file, options) => {
+    logger.profile('task');
+    if (options.verbose) {
+      logger.level = 'verbose';
+    }
+    logger.verbose('processing the file: %s', file);
+    await extractor(file)
+      .then((data) => {
+        counter(data).forEach((pair) => console.log(`${pair[0]}: ${pair[1]}`));
+        logger.profile('task');
+      })
+      .catch((err) => {
+        logger.error(new Error(err));
+        logger.profile('task');
+      });
+  })
+  .example('word-counter myTextFile.txt')
+  .example('word-counter path/to/myTextFile.txt');
 
 cli.option('-V, --verbose', 'Verbose logging');
 
