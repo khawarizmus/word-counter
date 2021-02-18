@@ -1,12 +1,13 @@
 import { createLogger, format, transports, addColors } from 'winston';
-// import prettyConsoleFormat from 'winston-format-pretty-console';
 
+// define the logger format
 const myFormat = format.printf(({ level, message, label, timestamp, durationMs }) => {
   return durationMs
     ? `\n${message} done in: ${durationMs} ms`
     : `[${level}]: [${timestamp}] ${label}:  ${message}`;
 });
 
+// use custom logging levels with colors
 const customLevels = {
   levels: {
     error: 0,
@@ -51,4 +52,5 @@ export const logger = createLogger({
   ],
 });
 
+// use the custom colors
 addColors(customLevels.colors);
