@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import { IWordCount } from 'WordCount';
+import { logger } from './Logger';
 
 /**
  * @summary given a content string this function counts word frequency.
@@ -7,6 +8,7 @@ import { IWordCount } from 'WordCount';
  * @return {Array<[string, number]>} and array of pairs with the first index being for the word and the second for it's frequency eg: ["lorem", 1].
  */
 export const counter = (content: string): Array<[string, number]> => {
+  logger.verbose('normalizing the file...');
   // We start by normalizing the content to get consistent results and avoid cavitates
   // first we deburr the content: 'déjà vu' => 'deja vu'
   // https://lodash.com/docs/4.17.15#deburr

@@ -3,8 +3,8 @@ import { extractor, SUPPORTED_EXT } from '../../src/Extractor';
 describe('the extractor function should extract content properly', () => {
   it('should throw error if file format not supported', () => {
     expect(async () => {
-      await extractor('myFile.pdf').catch((e) => {
-        throw new Error(e);
+      await extractor('myFile.pdf').catch((err) => {
+        throw new Error(err);
       });
     }).rejects.toThrow(
       `file extension not supported pick a file with the following extensions: ${SUPPORTED_EXT}`
@@ -12,8 +12,8 @@ describe('the extractor function should extract content properly', () => {
   });
   it("should throw error if file don't exist", () => {
     expect(async () => {
-      await extractor('IDoNotExist.txt').catch((e) => {
-        throw new Error(e);
+      await extractor('IDoNotExist.txt').catch((err) => {
+        throw new Error(err);
       });
     }).rejects.toThrow();
   });

@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import { logger } from './Logger';
 
 export const SUPPORTED_EXT = ['.txt'];
 /**
@@ -9,13 +10,15 @@ export const SUPPORTED_EXT = ['.txt'];
  * @return {string} content of the file.
  */
 export const extractor = async (inputPath: string): Promise<string> => {
+  logger.verbose('extracting file content...');
   // check file extension
   const ext = path.extname(inputPath);
 
-  if (!SUPPORTED_EXT.includes(ext))
+  if (!SUPPORTED_EXT.includes(ext)) {
     throw new Error(
       `file extension not supported pick a file with the following extensions: ${SUPPORTED_EXT}`
     );
+  }
   // resolving the file path into an absolute path by having the current working directory as reference
   const resolvedPath = path.resolve(process.cwd(), inputPath);
   return new Promise((resolve, reject) => {
@@ -23,6 +26,7 @@ export const extractor = async (inputPath: string): Promise<string> => {
     // notice that when handling files above 10MB it's best to use a stream instated of a buffer eg: fs.createReadStream()
     fs.readFile(resolvedPath, 'utf8', (err, data) => {
       if (err) {
+        logger.error(err);
         reject(err);
         return;
       }
