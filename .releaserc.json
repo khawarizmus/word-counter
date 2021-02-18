@@ -9,11 +9,11 @@
                   "prerelease": true
                 }
               ],
-  "plugins": ["@semantic-release/commit-analyzer", "@semantic-release/release-notes-generator", ["@semantic-release/github", {
+  "plugins": ["@semantic-release/commit-analyzer", "@semantic-release/release-notes-generator", "@semantic-release/github", "@semantic-release/changelog", ["@semantic-release/git", {
     "assets": [
       {"path": "dist/word-counter-linux", "label": "linux x64"},
       {"path": "dist/word-counter-macos", "label": "mac x64"},
       {"path": "dist/word-counter-win.exe", "label": "windows x64"}
     ]
-  }], "@semantic-release/changelog"]
+  }]]
 }
