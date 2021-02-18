@@ -27,8 +27,6 @@
     "test": "jest --coverage --verbose",
     "test:watch": "jest --watch",
     "validate": "npm-run-all --parallel lint test",
-    "report-coverage": "cat ./tests/unit/coverage/lcov.info | codecov",
-    "travis-deploy-once": "travis-deploy-once",
     "semantic-release": "semantic-release"
   },
   "author": "gimyboya <biz.afatah@gmail.com>",
