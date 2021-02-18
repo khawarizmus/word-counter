@@ -43,6 +43,10 @@ jobs:
           node-version: ${{ matrix.node-version }}
      - run: yarn
      - run: yarn test
+     - name: Upload coverage to Codecov
+       uses: codecov/codecov-action@v1
+       with:
+          directory: ./tests/unit/coverage
   # we release if everything is fine
   Release:
     runs-on: ubuntu-latest
