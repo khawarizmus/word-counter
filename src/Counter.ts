@@ -1,6 +1,11 @@
 import _ from 'lodash';
 import { IWordCount } from 'WordCount';
 
+/**
+ * @summary given a content string this function counts word frequency.
+ * @param {string} content - content as a string.
+ * @return {Array<[string, number]>} and array of pairs with the first index being for the word and the second for it's frequency eg: ["lorem", 1].
+ */
 export const counter = (content: string): Array<[string, number]> => {
   // We start by normalizing the content to get consistent results and avoid cavitates
   // first we deburr the content: 'déjà vu' => 'deja vu'

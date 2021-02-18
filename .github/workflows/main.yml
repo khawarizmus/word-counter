@@ -1,4 +1,4 @@
-name: Build, Test and Release
+name: Build
 # This workflow will build, test and release our CLI
 
 # we only run this workflow on the main (release) branch for both commits and PRs

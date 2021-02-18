@@ -4,7 +4,7 @@ import { counter } from './src/Counter';
 
 const cli = cac();
 
-cli.command('count <file>', 'count words in file').action(async (file) => {
+cli.command('<file>', 'file name or path to count the words').action(async (file) => {
   console.log(file);
   await extractor(file)
     .then((data) => {
@@ -14,8 +14,6 @@ cli.command('count <file>', 'count words in file').action(async (file) => {
       throw new Error(e);
     });
 });
-
-// cli.option('--path <path-to-file>', 'Provide your file path');
 
 // Display help message when `-h` or `--help` appears
 cli.help();
