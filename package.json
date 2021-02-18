@@ -12,6 +12,9 @@
   },
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
+  "bin": {
+    "word-counter": "dist/index.js"
+  },
   "scripts": {
     "commit": "git-cz",
     "prebuild": "rimraf dist",
@@ -19,6 +22,7 @@
     "start": "ts-node-dev --respawn --transpile-only index.ts",
     "build": "tsc",
     "build:watch": "tsc --watch",
+    "postbuild": "pkg . --out-path dist -t node12-linux-x64,node12-win-x64,node12-macos-x64",
     "lint": "eslint index.ts src/**/*.ts",
     "test": "jest --coverage --verbose",
     "test:watch": "jest --watch",
@@ -39,6 +43,7 @@
     "cac": "^6.7.2",
     "chalk": "^4.1.0",
     "lodash": "^4.17.20",
+    "pkg": "^4.4.9",
     "winston": "^3.3.3"
   },
   "devDependencies": {
